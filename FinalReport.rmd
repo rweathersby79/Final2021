@@ -1,12 +1,11 @@
 ---
 title: "Covid91 vaccine study Final2021"
-author: "Put your name here!"
-date: "put the date here"
+author: "Rashonda Weathersby"
+date: "April 28, 2021"
 output: 
   html_document:
     number_sections: true
     toc: true
-
 ---
 
 ```{r include=FALSE,echo=FALSE}
@@ -14,7 +13,7 @@ require(tidyverse)
 require(tigerstats)
 require(forcats)
 OldData <-read.csv(file="covid91.csv",header=TRUE)
-#recode to remove the annoying "X" from the dataframe
+#recode aids to say covid and then remove the annoying "X" from the dataframe
 FinalData <- OldData %>% mutate(infected = recode(infected, aids = "covid", none = "OK" )) %>% select(-one_of("X"))
 ```
 
@@ -22,3 +21,83 @@ FinalData <- OldData %>% mutate(infected = recode(infected, aids = "covid", none
 
 A new  preventative vaccine (covid91) is under test in clinical trials. Given the nature of this vaccine it is suspected that the drug may exhibit different effectiveness across the variety of subpopulations tracked. Consider population subgroups consisting of Males, Females, just the drug users, and just those in the LGBTQ community. Write a complete report that separately considers this drug for each subgroup and your recommendations as to whether people in the subgroup should take the vaccine. Structure your report in four sections each devoted to one of the four subgroups, use null and alternative hypothesis statements and correct statistical verbage when referencing p-values in conclusions.
 
+
+$H_0$ There is no difference between the subgroups in accordance to the effectiveness of the preventative covid19 vaccine.  
+$H_a$ There is a significant difference between the subgroups in accordance to the effectiveness of the preventative covid19 vaccine. 
+# Methods
+
+<!--Decide on your methods: use "variable analysis" or other appropriate descriptors. Make sure to choose at least one graphical method and at least one numerical method. Discuss what data manipulations may be needed for example subsetting or other binning procedures and what sort of graphical displays and inferential tools will be used! -->
+
+# Results 
+
+
+
+```{r}
+barchartGC(~treatment + DrugUser,data=FinalData)
+barchartGC(~treatment + DrugUser,data=FinalData, type="percent")
+
+```
+
+
+<!--Divide this section into two sub-sections:  One for your descriptive results and one for your inferential results. !-->
+
+
+# Numericial Results 
+
+```{r}
+table1 <- xtabs(~treatment + DrugUser, data=FinalData)
+rowPerc(table1)
+colPerc(table1)
+```
+
+# Inferential Results
+
+```{r}
+chisq.test(table1)
+chisqtestGC(table1)
+fisher.test(table1)
+```
+# Results 
+```{r}
+barchartGC(~treatment + sex,data=FinalData)
+barchartGC(~treatment + sex,data=FinalData, type="percent")
+
+```
+
+# Numericial Results 
+
+```{r}
+table1 <- xtabs(~treatment + sex, data=FinalData)
+rowPerc(table1)
+colPerc(table1)
+```
+# Inferential Results
+```{r}
+chisq.test(table1)
+chisqtestGC(table1)
+fisher.test(table1)
+```
+# Results 
+
+```{r}
+barchartGC(~treatment + LGBTQ,data=FinalData)
+barchartGC(~treatment + LGBTQ,data=FinalData, type="percent")
+
+```
+# Numericial Results
+```{r}
+table1 <- xtabs(~treatment + LGBTQ, data=FinalData)
+rowPerc(table1)
+colPerc(table1)
+```
+# Inferential Results
+
+```{r}
+chisq.test(table1)
+chisqtestGC(table1)
+fisher.test(table1)
+```
+
+# Discussion and Conclusion 
+
+<!--Discussion and conclusion here. If you found a relationship be sure to consider whether the relationship occurs because one of the variable causes the other, ot whether they perhaps are related for some reason. Watch the Chapter 6 videos from the Georgetown videos collection,!--> 
