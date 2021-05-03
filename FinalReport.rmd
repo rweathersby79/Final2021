@@ -39,6 +39,8 @@ barchartGC(~treatment + DrugUser,data=FinalData, type="percent")
 ```
 
 
+According to the bar chart, the drug shows no differences between the placebo, and the vaccine among drug abusers. However, the vaccine in this category shows overwhelming no to the effectiveness of the treatment. 
+
 <!--Divide this section into two sub-sections:  One for your descriptive results and one for your inferential results. !-->
 
 
@@ -49,7 +51,7 @@ table1 <- xtabs(~treatment + DrugUser, data=FinalData)
 rowPerc(table1)
 colPerc(table1)
 ```
-
+The numerical results, shows that among drug an overwhelming amount of Drug Users stated that the treatment had no effect, drug or placebo. 
 # Inferential Results
 
 ```{r}
@@ -57,12 +59,18 @@ chisq.test(table1)
 chisqtestGC(table1)
 fisher.test(table1)
 ```
+According to the p-value= 0.053.The odds ratio 1.090089 means that Drug users who got the vaccines were 1.1 times more not to feel the effectiveness of the Covid drug treatment. Due to the p value being below one, we cannot conclusively say that there is a different in the hypothesis which makes this a null hypothesis.   
+
+
 # Results 
 ```{r}
 barchartGC(~treatment + sex,data=FinalData)
 barchartGC(~treatment + sex,data=FinalData, type="percent")
 
 ```
+
+According to the bar chart, guys responds more to the placebo and the drug more than women. 
+
 
 # Numericial Results 
 
@@ -71,12 +79,19 @@ table1 <- xtabs(~treatment + sex, data=FinalData)
 rowPerc(table1)
 colPerc(table1)
 ```
+
+According to the numerical result, women responded to the drug treatment 49.18% and the placebo at 50.82%. The men responded to the drug treatment at 48.84% and placebo at 51.16% at a slight margin about women who participated in the treatment.  
+
+
 # Inferential Results
 ```{r}
 chisq.test(table1)
 chisqtestGC(table1)
 fisher.test(table1)
 ```
+The p-value= 0.6295.The odds ratio 1.013861 means that men who got the vaccines were 1.01 times more likely to fell the effectiveness of the treatment than women who got the same treatment.Due to the p value being below one, we cannot conclusively say that there is a different in the hypothesis which makes this a null hypothesis.   
+
+
 # Results 
 
 ```{r}
@@ -84,12 +99,18 @@ barchartGC(~treatment + LGBTQ,data=FinalData)
 barchartGC(~treatment + LGBTQ,data=FinalData, type="percent")
 
 ```
+
+According to the bar chart straight individuals overwhelming responded to the placebo and drug treatment over Gay individuals. 
+
 # Numericial Results
 ```{r}
 table1 <- xtabs(~treatment + LGBTQ, data=FinalData)
 rowPerc(table1)
 colPerc(table1)
 ```
+
+According to the numerical results, Straight participates responded to the treatment overwhelming compared to Gay participates. The straight participates responded 89.50% to the drug, and 90.07% to the placebo. The Gay participates responded 10.50% to the drug, and 9.93% to the placebo. Overall Straight people showed a stronger response to the placebo then the Gay participates, and the Gay participates showed a strong response to the actually drug. However, the differences is only by slight margin between drug and placebo. 
+
 # Inferential Results
 
 ```{r}
@@ -98,6 +119,11 @@ chisqtestGC(table1)
 fisher.test(table1)
 ```
 
+The p-value is 0.1831. The odds ratio 1.064173 means that straight participates who got the vaccines were 1.06 times more likely to feel the effects of the treatments than Gay participate  who got the treatment.Due to the p value being below one, we cannot conclusively say that there is a different in the hypothesis which makes this a null hypothesis.    
+
+
 # Discussion and Conclusion 
 
 <!--Discussion and conclusion here. If you found a relationship be sure to consider whether the relationship occurs because one of the variable causes the other, ot whether they perhaps are related for some reason. Watch the Chapter 6 videos from the Georgetown videos collection,!--> 
+
+In this discussion we wanted to analyze the effectiveness of the covid 19 treatment across different subpopulations, that is consist of drug user, sexes and sexual denominations. According to the p-value in each break down in the different subgroups the margin of difference was so small we where unable to conclude a definite hypotheses that the effectiveness of the treatment on each group. Therefore,there is no difference between the subgroups in accordance to the effectiveness of the preventative covid19 vaccine.    
